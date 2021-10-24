@@ -1,0 +1,38 @@
+{
+  "name": "kollegium-frontend",
+  "version": "0.1.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --mode development --watch",
+    "develop": "webpack serve --mode development --open",
+    "production": "webpack --mode production"
+  },
+  "author": "S",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@vue/compiler-sfc": "^3.2.20",
+    "bulma": "^0.9.3",
+    "bulma-toast": "^2.4.1",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.2",
+    "node-sass": "^6.0.1",
+    "remove-files-webpack-plugin": "^1.4.5",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.0",
+    "vue": "^3.2.20",
+    "vue-loader": "^16.8.1",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2",
+    "webpack": "^5.58.1",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  }
+}
