@@ -26,8 +26,11 @@
         </a>
       </div>
       <div class="navbar-menu">
-        <pricipal-navbar-item v-if="isRole('principal')" />
-        <teacher-navbar-item v-if="isRole('teacher')" />
+        <div class="navbar-start">
+          <pricipal-navbar-item v-if="isRole('principal')" />
+          <teacher-navbar-item v-if="isRole('teacher') || isRole('principal')" />
+        </div>
+
         <div class="navbar-end">
           <router-link v-if="!isLoggedIn" to="/login" class="navbar-item">
             anmelden

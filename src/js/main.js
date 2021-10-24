@@ -6,7 +6,13 @@ import {
   faAngleRight,
   faCheckCircle,
   faEye,
-  faSync
+  faSync,
+  faList,
+  faFile,
+  faFileAlt,
+  faUpload,
+  faCheck,
+  faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -22,7 +28,13 @@ library.add(
   faAngleRight,
   faCheckCircle,
   faEye,
-  faSync
+  faSync,
+  faList,
+  faFile,
+  faFileAlt,
+  faUpload,
+  faCheck,
+  faExclamationTriangle
 )
 
 
