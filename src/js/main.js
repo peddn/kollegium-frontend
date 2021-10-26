@@ -13,7 +13,9 @@ import {
   faUpload,
   faCheck,
   faExclamationTriangle,
-  faTrash
+  faTrash,
+  faEdit,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -34,9 +36,12 @@ library.add(
   faFile,
   faFileAlt,
   faUpload,
+  faDownload,
   faCheck,
   faExclamationTriangle,
-  faTrash
+  faTrash,
+  faEdit,
+
 )
 
 

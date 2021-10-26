@@ -1,5 +1,4 @@
 
-import { remove } from '@vue/shared';
 import api from '../../../api/letters';
 
 // initial state
@@ -109,8 +108,15 @@ const actions = {
     } catch (error) {
       console.log(error)
     }
+  },
+  async getExport({ commit, rootGetters }, id, format) {
+    const jwt = rootGetters['user/getJwt'];
+    try {
+      await api.getExport(jwt, id, format);
+    } catch (error) {
+      console.log(error)
+    }
   }
-
 };
 
 export default {

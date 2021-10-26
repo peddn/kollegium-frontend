@@ -93,12 +93,14 @@
                 </button>
               </div>
               <div class="control">
-                <input
+                <button
                   type="submit"
-                  value="Schreiben erstellen"
                   class="button is-success"
                   :disabled="!isValid"
-                />
+                  :class="{ 'is-loading': isLoading }"
+                >
+                  Schreiben erstellen
+                </button>
               </div>
             </div>
           </form>
@@ -109,6 +111,8 @@
 </template>
 
 <script>
+import { toast } from "bulma-toast";
+
 import ViewHeader from "../common/ViewHeader.vue";
 
 export default {
@@ -119,6 +123,7 @@ export default {
     return {
       heading: "",
       selectedFiles: [],
+      isLoading: false
     };
   },
   methods: {
@@ -130,15 +135,29 @@ export default {
         this.selectedFiles = [];
       }
     },
-    onSubmit(event) {
+    async onSubmit(event) {
       const formElement = document.getElementById("createLetterForm");
-      this.$store.dispatch("letters/create", formElement);
+      this.isLoading = true;
+      await this.$store.dispatch("letters/create", formElement);
+      toast({
+        message: "Das Schreiben wurde erfolgreich erstellt.",
+        position: "bottom-right",
+        type: "is-success",
+        dismissible: true,
+        pauseOnHover: true,
+      });
+      this.isLoading = false;
+      this.reset(event);
     },
     reset(event) {
       event.preventDefault();
       this.heading = "";
       this.selectedFiles = [];
     },
+    setLoading(event, state) {
+      event.preventDefault();
+      this.isLoading = state;
+    }
   },
   computed: {
     filesSelected() {

@@ -65,7 +65,6 @@ const actions = {
     async login({ commit }, creds) {
         try {
             const userdata = await api.login(creds)
-            console.log(userdata)
             commit('login', userdata)
             router.push('/')
         } catch(error) {
