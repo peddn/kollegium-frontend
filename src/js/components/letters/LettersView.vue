@@ -1,15 +1,32 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">Letters Manage</h1>
+      <view-header
+        title="Schreiben zur Kenntnisnahme:"
+        subtitle="Der Blaue Ordner"
+        flavour="is-info"
+      />
+      <letters-nav />
+      <letters-list />
     </div>
   </section>
 </template>
 
 <script>
+import ViewHeader from "../common/ViewHeader.vue";
+import LettersList from "./LettersList.vue";
+import LettersNav from './LettersNav.vue';
+
 export default {
-  created() {
-    this.$store.dispatch("letters/reloadData")
-  }
-}
+  components: {
+    ViewHeader,
+    LettersList,
+    LettersNav
+  },
+    created() {
+    this.$store.dispatch("letters/reloadData");
+  },
+};
 </script>
+
+

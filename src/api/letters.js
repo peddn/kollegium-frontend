@@ -17,7 +17,7 @@ export default {
             throw new Error('You are not logged in.');
         }
     },
-    async createLetter(jwt, formData) {
+    async create(jwt, formData) {
         if (jwt !== '') {
             const result = await fetch('http://localhost:1337/letters', {
                 method: 'POST',
@@ -35,5 +35,23 @@ export default {
         } else {
             throw new Error('You are not logged in.');
         }
-    }
+    },
+    async remove(jwt, id) {
+        if (jwt !== '') {
+            const result = await fetch('http://localhost:1337/letters/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Bearer ' + jwt,
+                    "Content-Type": "application/json"
+                }
+            });
+            if (!result.ok) {
+                throw new Error('Network response was not ok.');
+            }
+            const letters = await result.json();
+            return letters;
+        } else {
+            throw new Error('You are not logged in.');
+        }
+    },
 }

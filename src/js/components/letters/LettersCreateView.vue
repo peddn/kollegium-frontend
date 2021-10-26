@@ -1,9 +1,13 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">Letters Create</h1>
+      <view-header
+        title="Ein neues Schreiben erstellen:"
+        subtitle="Der Blaue Ordner"
+        flavour="is-info"
+      />
 
-      <div class="columns">
+      <div class="columns mt-5">
         <div class="column is-half is-offset-one-quarter">
           <form @submit.prevent="onSubmit" id="createLetterForm">
             <div class="field">
@@ -81,7 +85,7 @@
             <div class="field is-grouped is-grouped-right">
               <div class="control">
                 <button
-                  class="button is-success"
+                  class="button is-warning"
                   :disabled="!hasHeading && !filesSelected"
                   @click="reset"
                 >
@@ -105,7 +109,12 @@
 </template>
 
 <script>
+import ViewHeader from "../common/ViewHeader.vue";
+
 export default {
+  components: {
+    ViewHeader,
+  },
   data() {
     return {
       heading: "",
@@ -115,6 +124,7 @@ export default {
   methods: {
     onFilesSelected(event) {
       if (event.target.files.length !== 0) {
+        this.selectedFiles = [];
         this.selectedFiles = event.target.files;
       } else {
         this.selectedFiles = [];
@@ -122,9 +132,10 @@ export default {
     },
     onSubmit(event) {
       const formElement = document.getElementById("createLetterForm");
-      this.$store.dispatch("letters/createLetter", formElement);
+      this.$store.dispatch("letters/create", formElement);
     },
     reset(event) {
+      event.preventDefault();
       this.heading = "";
       this.selectedFiles = [];
     },

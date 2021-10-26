@@ -1,4 +1,5 @@
 
+import { remove } from '@vue/shared';
 import api from '../../../api/letters';
 
 // initial state
@@ -19,8 +20,17 @@ const getters = {
   },
   getData: (state) => {
     return state.data;
+  },
+  getDataFiltered: state => {
+    switch (state.view.activeFilter) {
+      case 'all':
+        return state.data
+      //      case 'todo':
+      //        return state.data.filter(perusal => perusal.signed === false )
+      default:
+        return state.data
+    }
   }
-  
 };
 
 // mutations
@@ -32,9 +42,13 @@ const mutations = {
   setData(state, data) {
     state.data = data;
   },
-  createLetter(state, letter) {
-    console.log('LETTER, letter')
+  create(state, letter) {
     state.data.push(letter);
+  },
+  remove(state, letter) {
+    state.data = state.data.filter((currentLetter) => {
+      return currentLetter.id !== letter.id;
+    })
   },
   resetActiveFilter(state) {
     state.view.activeFilter = 'all'
@@ -56,12 +70,10 @@ const actions = {
       console.log(error)
     }
   },
-  async createLetter({ commit, rootGetters }, formElement) {
+  async create({ commit, rootGetters }, formElement) {
 
     const formData = new FormData();
-
     const formElements = formElement.elements;
-
     const data = {};
 
     for (let i = 0; i < formElements.length; i++) {
@@ -69,10 +81,8 @@ const actions = {
       if (!["submit", "file", "button"].includes(currentElement.type)) {
         data[currentElement.name] = currentElement.value;
       } else if (currentElement.type === "file") {
-
         for (let i = 0; i < currentElement.files.length; i++) {
           const file = currentElement.files[i];
-                    console.log(file);
           formData.append("files.documents", file, file.name);
         }
       }
@@ -82,15 +92,25 @@ const actions = {
 
     const jwt = rootGetters['user/getJwt'];
     try {
-      const letter = await api.createLetter(jwt, formData);
-
-      console.log(letter);
-      commit('createLetter', letter);
+      const letter = await api.create(jwt, formData);
+      commit('create', letter);
       commit('user/pushDeleteMutation', 'letters/resetData', { root: true });
     } catch (error) {
       console.log(error)
     }
+  },
+  async remove({ commit, rootGetters }, id) {
+    const jwt = rootGetters['user/getJwt'];
+    try {
+      const letter = await api.remove(jwt, id);
+      commit('remove', letter);
+      console.log(letter);
+
+    } catch (error) {
+      console.log(error)
+    }
   }
+
 };
 
 export default {

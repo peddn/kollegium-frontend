@@ -20,13 +20,13 @@
           <div class="column is-8">
             {{ perusal.letter.title }}<br />
             <ul class="ml-3">
-              <li v-for="file in perusal.letter.files" :key="file.id">
-                <a :href="'http://localhost:1337' + file.url" target="_blank">
+              <li v-for="doc in perusal.letter.documents" :key="doc.id">
+                <a :href="'http://localhost:1337' + doc.url" target="_blank">
                   <span class="icon-text">
                     <span class="icon">
                       <i class="fas fa-angle-right"></i>
                     </span>
-                    {{ file.name }}
+                    {{ doc.name }}
                   </span>
                 </a>
               </li>
