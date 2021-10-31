@@ -52,7 +52,7 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [
-                { from: './src/assets', to: './assets', force: true },
+                { from: './src/assets/img', to: './img', force: true },
             ]
         }),
         new MiniCssExtractPlugin({
