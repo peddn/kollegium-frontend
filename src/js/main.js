@@ -11,11 +11,11 @@ import {
   faFile,
   faFileAlt,
   faUpload,
+  faDownload,
   faCheck,
   faExclamationTriangle,
   faTrash,
-  faEdit,
-  faDownload
+  faEdit
 } from '@fortawesome/free-solid-svg-icons'
 
 
