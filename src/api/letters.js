@@ -1,9 +1,9 @@
-import { findIconDefinition } from "@fortawesome/fontawesome-svg-core";
+const ROOT_URL = process.env.ROOT_URL;
 
 export default {
     async getData(jwt) {
         if (jwt !== '') {
-            const response = await fetch('http://localhost:1337/letters', {
+            const response = await fetch(ROOT_URL + '/letters', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + jwt,
@@ -21,7 +21,7 @@ export default {
     },
     async create(jwt, formData) {
         if (jwt !== '') {
-            const response = await fetch('http://localhost:1337/letters', {
+            const response = await fetch(ROOT_URL + '/letters', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + jwt
@@ -39,7 +39,7 @@ export default {
     },
     async remove(jwt, id) {
         if (jwt !== '') {
-            const response = await fetch('http://localhost:1337/letters/' + id, {
+            const response = await fetch(ROOT_URL + '/letters/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': 'Bearer ' + jwt,
@@ -60,7 +60,7 @@ export default {
         const format = payload.format;
         if (jwt !== '') {
             const response = await fetch(
-                "http://localhost:1337/letters/" +
+                ROOT_URL + '/letters/' +
                 id +
                 "?" +
                 new URLSearchParams({

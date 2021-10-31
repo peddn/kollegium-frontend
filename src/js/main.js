@@ -1,5 +1,8 @@
 require('../scss/main.scss');
 
+
+console.log(process.env.ROOT_URL);
+
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 
 import {
@@ -26,7 +29,6 @@ import store from './store';
 
 import App from './components/App.vue';
 
-
 library.add(
   faAngleRight,
   faCheckCircle,
@@ -43,8 +45,6 @@ library.add(
   faEdit,
 
 )
-
-
 
 createApp(App)
   .use(router)

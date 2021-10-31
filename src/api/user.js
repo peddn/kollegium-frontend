@@ -1,6 +1,8 @@
+const ROOT_URL = process.env.ROOT_URL;
+
 export default {
     async login(creds) {
-        const result = await fetch("http://localhost:1337/auth/local", {
+        const result = await fetch(ROOT_URL + '/auth/local', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

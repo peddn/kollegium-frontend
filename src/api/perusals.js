@@ -1,10 +1,12 @@
+const ROOT_URL = process.env.ROOT_URL;
+
 export default {
     async getDataByUser(jwt) {
         if (jwt !== '') {
-            const result = await fetch('http://localhost:1337/perusals/own', {
+            const result = await fetch(ROOT_URL + '/perusals/own', {
                 headers: {
                     'Authorization': 'Bearer ' + jwt,
-                    "Content-Type": "application/json"
+                    "Content-Type": 'application/json'
                 }
             });
             if (!result.ok) {
@@ -17,8 +19,8 @@ export default {
         }
     },
     async updateSigned(jwt, perusal, signed) {
-        const result = await fetch("http://localhost:1337/perusals/" + perusal.id, {
-            method: "PUT",
+        const result = await fetch(ROOT_URL + '/perusals/' + perusal.id, {
+            method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + jwt,
                 'Content-Type': 'application/json'
