@@ -30,7 +30,7 @@
             {{ letter.title }}<br />
             <ul class="ml-3">
               <li v-for="doc in letter.documents" :key="doc.id">
-                <a :href="'http://localhost:1337' + doc.url" target="_blank">
+                <a :href="getRootUrl + doc.url" target="_blank">
                   <span class="icon-text">
                     <span class="icon">
                       <i class="fas fa-angle-right"></i>
@@ -136,6 +136,9 @@ export default {
     },
   },
   computed: {
+    getRootUrl() {
+      return process.env.ROOT_URL
+    },
     dataFiltered() {
       return this.$store.getters["letters/getDataFiltered"];
     },
