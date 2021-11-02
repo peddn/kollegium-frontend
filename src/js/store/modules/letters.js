@@ -1,5 +1,5 @@
 
-import api from '../../../api/letters';
+import api from '../../api/letters';
 
 // initial state
 const state = () => ({
