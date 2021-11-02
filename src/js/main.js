@@ -1,8 +1,6 @@
 require('../scss/main.scss');
 
-
-console.log(process.env.ROOT_URL);
-
+// import icons from fontawesome
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 
 import {
@@ -19,15 +17,7 @@ import {
   faExclamationTriangle,
   faTrash,
   faEdit
-} from '@fortawesome/free-solid-svg-icons'
-
-
-import { createApp } from 'vue';
-
-import router from './router';
-import store from './store';
-
-import App from './components/App.vue';
+} from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faAngleRight,
@@ -44,7 +34,17 @@ library.add(
   faTrash,
   faEdit,
 
-)
+);
+
+// create vue Application with store and router
+import { createApp } from 'vue';
+
+import router from './router';
+import store from './store';
+
+import App from './components/App.vue';
+
+
 
 createApp(App)
   .use(router)

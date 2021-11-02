@@ -66,7 +66,7 @@ const actions = {
       commit('setData', data);
       commit('user/pushDeleteMutation', 'letters/resetData', { root: true });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
   async create({ commit, rootGetters }, formElement) {

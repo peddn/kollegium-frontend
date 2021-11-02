@@ -21,7 +21,7 @@
 
     <div class="field">
       <div class="control">
-        <button class="button is-link is-fullwidth" @click="login">anmelden</button>
+        <button class="button is-link is-fullwidth" :class="{ 'is-loading': isLoading }" @click="login">anmelden</button>
       </div>
     </div>
   </div>
@@ -29,18 +29,21 @@
 
 <script>
 export default {
-  data: function () {
+  data() {
     return {
+      isLoading: false,
       identifier: "",
       password: "",
     };
   },
   methods: {
-    login: function (event) {
-      this.$store.dispatch("user/login", {
+    async login(event) {
+      this.isLoading = true;
+      await this.$store.dispatch("user/login", {
         identifier: this.identifier,
         password: this.password,
       });
+      this.isLoading = false;
     },
   },
 };

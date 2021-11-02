@@ -20,7 +20,7 @@ const getters = {
   getData: (state) => {
     return state.data
   },
-  getDataFiltered: state => {
+  getDataFiltered: (state) => {
     switch (state.view.activeFilter) {
       case 'all':
         return state.data
@@ -31,6 +31,12 @@ const getters = {
       default:
         break
     }
+  },
+  getSignedCount: (state) => {
+    return state.data.filter(perusal => perusal.signed === true ).length;
+  },
+  getTotalCount: (state) => {
+    return state.data.length
   }
 }
 

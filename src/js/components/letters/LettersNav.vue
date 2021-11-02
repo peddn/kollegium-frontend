@@ -8,7 +8,11 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item mr-3">
-          <button class="button is-small is-success" @click="reloadData">
+          <button
+            class="button is-small is-success"
+            @click="reloadData"
+            :class="{ 'is-loading': isLoading }"
+          >
             <span class="icon is-small">
               <i class="fas fa-sync"></i>
             </span>
@@ -21,6 +25,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   methods: {
     setActiveFilter(filter) {
       this.$store.commit("letters/setActiveFilter", filter);
@@ -28,8 +37,10 @@ export default {
     isActiveFilter(filter) {
       return this.$store.getters["letters/isActiveFilter"](filter);
     },
-    reloadData() {
-      this.$store.dispatch("letters/reloadData");
+    async reloadData() {
+      this.isLoading = true;
+      const success = await this.$store.dispatch("letters/reloadData");
+      this.isLoading = false;
     },
   },
 };

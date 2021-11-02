@@ -49,6 +49,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   methods: {
     setActiveFilter(filter) {
       this.$store.commit("perusals/setActiveFilter", filter);
@@ -56,8 +61,10 @@ export default {
     isActiveFilter(filter) {
       return this.$store.getters["perusals/isActiveFilter"](filter);
     },
-    reloadData() {
+    async reloadData() {
+      this.isLoading = true;
       this.$store.dispatch("perusals/reloadData");
+      this.isLoading = false;
     },
   },
 };
