@@ -23,7 +23,7 @@ export default {
     LettersList,
     LettersNav
   },
-    created() {
+  created() {
     this.$store.dispatch("letters/reloadData");
   },
 };

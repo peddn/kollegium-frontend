@@ -1,6 +1,9 @@
 
 import api from '../../api/letters';
 
+// TODO implement filter (date, title, percent_completed)
+
+
 // initial state
 const state = () => ({
   data: [],
@@ -20,7 +23,7 @@ const getters = {
   getData: (state) => {
     return state.data;
   },
-  getDataFiltered: state => {
+  getDataFiltered: (state) => {
     switch (state.view.activeFilter) {
       case 'all':
         return state.data
@@ -29,6 +32,11 @@ const getters = {
       default:
         return state.data
     }
+  },
+  getLetter: (state) => (id) => {
+    return state.data.filter((letter) => {
+      return letter.id === parseInt(id);
+    })[0];
   }
 };
 

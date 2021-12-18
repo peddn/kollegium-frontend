@@ -129,7 +129,9 @@ export default {
       });
       buttonElement.classList.remove("is-loading");
     },
-    async edit(id) {},
+    async edit(id) {
+      this.$router.push('/letters/update/' + id);
+    },
     async getExport(id) {
       // TODO: format 'csv' is hardcoded here
       await this.$store.dispatch("letters/getExport", { id: id, format: "csv" });
