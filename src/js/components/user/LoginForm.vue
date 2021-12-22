@@ -1,12 +1,12 @@
 <template>
   <div id="login-form">
     <div class="field">
-      <label class="label">E-Mail</label>
+      <label class="label">Benutzername / E-Mail</label>
       <div class="control">
         <input
           class="input"
           type="text"
-          placeholder="benutzername@edith-stein-schule.net"
+          placeholder="benutzername@foerderzentrum-aichach.de"
           v-model="identifier"
         />
       </div>

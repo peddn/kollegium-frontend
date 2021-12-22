@@ -45,7 +45,7 @@
             </button>
             <span v-else class="tag is-info">
               <span class="icon-text">
-                <span>gesichted</span>
+                <span>gesichtet</span>
                 <span class="icon">
                   <i class="fas fa-check-circle"></i>
                 </span>
